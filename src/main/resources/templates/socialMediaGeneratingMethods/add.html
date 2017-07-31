@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="socialMediaGeneratingMethods" type="zw.co.tndangana.hrtp.domain.ict.SocialMediaGeneratingMethods"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title> Social Media Generating Methods</title>
+</head>
+<body>
+
+<div th:include="fragments/Header::header">
+
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+    <fieldset>
+        <legend> Social Media Generating Methods</legend>
+
+
+        <form th:object="${socialMediaGeneratingMethods}" th:action="@{|/socialMediaGeneratingMethods/submit.update/${socialMediaGeneratingMethods.id}/updated|}" method="post">
+
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Social Media Generating Method(a)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{method1}"  value="Artisanal kale" id="example-text-input"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Social Media Generating Method(b)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{method2}"  value="Artisanal kale" id="example-text-input"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Social Media Generating Method(c)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{method3}"  value="Artisanal kale" id="example-text-input"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Social Media Generating Method(d)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{method4}"  value="Artisanal kale" id="example-text-input"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </fieldset>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

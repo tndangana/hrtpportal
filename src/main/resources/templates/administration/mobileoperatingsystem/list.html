@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*@thymesVar id="mobileOperatingList" type="zw.co.tndangana.hrtp.domain.ict.MobileOperatingSystem"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:include="fragments/Header::header"></div>
+br/><br/><br/><br/>
+<div class="container"><table class="row">
+    <thead>
+
+    <td  class="col-6 col-md-4" >Name</td>
+    <td  class="col-6 col-md-4" >Description</td>
+    <td  class="col-6 col-md-4" >Action/<a th:href="@{|/mobileoperatingsystem/add.form|}">add</a></td>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="mobileOperating: ${mobileOperatingList}">
+
+        <td><span th:text="${mobileOperating.name}"></span>  </td>
+        <td><span th:text="${mobileOperating.description}"></span></td>
+        <td><a th:href="@{|/mobileoperatingsystem/update.form/${mobileOperating.id}|}">Update</a></td>
+
+
+    </tr>
+    </tbody>
+</table>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

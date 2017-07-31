@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="accommodation" type="zw.co.tndangana.hrtp.domain.Accommodation"*/-->
+<!--/*@thymesVar id="city" type="zw.co.tndangana.hrtp.domain.City"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title> Address</title>
+</head>
+<body>
+
+<div th:include="fragments/Header::header">
+
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+    <fieldset>
+        <legend> Address</legend>
+
+        <!--/*@thymesVar id="address" type="zw.co.tndangana.hrtp.domain.Address"*/-->
+        <form th:object="${address}" th:action="@{|/address/submit.form/${address.patient.id}|}" method="post">
+
+         <div class="form-group">
+                <label>Address Type</label>
+                <select  class="form-control" th:field="*{addressType}">
+                    <option value="">Select Option</option>
+                    <option th:each="addressType:${addressTypeList}"
+                            th:value="${addressType}"
+                            th:text="${addressType.name}">
+                    </option>
+                </select>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">House Number</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{buildingNumber}" value="How do I shoot web" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Street Name</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{streetName}" value="How do I shoot web" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Surbub</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{surbub}" value="How do I shoot web" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <select  class="form-control" th:field="*{city}">
+                    <option value="">Select Option</option>
+
+                    <option th:each="city:${cityList}"
+                            th:value="${city.id}"
+                            th:text="${city.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" th:field="*{currentResident}"/> Current Place of stay
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </fieldset>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

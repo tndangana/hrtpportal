@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="qualification" type="zw.co.tndangana.hrtp.domain.Qualification"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <qualification>Qualification</qualification>
+</head>
+<body>
+
+<div th:include="fragments/Header::header">
+
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+    <fieldset>
+        <legend>Qualification</legend>
+        <form th:object="${qualification}" th:action="@{|/qualification/submit.form|}" method="post">
+            <div class="form-group row">
+                <label>Name</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{name}"  value="Artisanal kale" id="example-text-input"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Description</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{description}" value="How do I shoot web" id="example-search-input"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </fieldset>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

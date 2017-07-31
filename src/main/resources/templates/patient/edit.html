@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="patient" type="zw.co.tndangana.hrtp.domain.Patient"*/-->
+<!--/*@thymesVar id="accommodation" type="zw.co.tndangana.hrtp.domain.Accommodation"*/-->
+<!--/*@thymesVar id="qualification" type="zw.co.tndangana.hrtp.domain.Qualification"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title> Patient</title>
+</head>
+<body>
+
+<div th:include="fragments/Header::header">
+
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+    <fieldset>
+        <legend> Patient</legend>
+
+        <form th:object="${patient}" th:action="@{|/patient/submit.update/${patient.id}|}" method="post">
+            <div class="form-group row">
+                <label for="firstName" class="col-2 col-form-label">First Name</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{firstName}"  value="Artisanal kale" id="firstName"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lastName" class="col-2 col-form-label">Last Name</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{lastName}"  value="Artisanal kale" id="lastName"/>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select  class="form-control" id="gender" th:field="*{gender}">
+                    <option value="">Select Option</option>
+                    <option th:each="gender:${genderList}"
+                            th:value="${gender}"
+                            th:text="${gender.name}">2</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label for="birthDate" class="col-2 col-form-label">Date Of Birth</label>
+                <div class="col-10">
+                    <input class="form-control" type="date" th:field="*{birthDate}"  value="Artisanal kale" id="birthDate"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Marital Status</label>
+                <select  class="form-control" th:field="*{maritalStatus}">
+                    <option value="">Select Option</option>
+                    <option th:each="maritalstatus:${maritalstatusList}"
+                            th:value="${maritalstatus.id}"
+                            th:text="${maritalstatus.name}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Religion</label>
+                <select class="form-control"  th:field="*{religion}">
+                    <option value="">Select Option</option>
+                    <option th:each="religion:${religionList}"
+                            th:value="${religion.id}"
+                            th:text="${religion.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Highest Qualification Level Attained</label>
+                <select class="form-control"  th:field="*{qualification}">
+                    <option value="">Select Option</option>
+
+                    <option th:each="qualification:${qualificationList}"
+                            th:value="${qualification.id}"
+                            th:text="${qualification.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Accommodation</label>
+                <select class="form-control"  th:field="*{accommodation}">
+                    <option value="">Select Option</option>
+
+                    <option th:each="accommodation:${accommodationList}"
+                            th:value="${accommodation.id}"
+                            th:text="${accommodation.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Patient's Occupation</label>
+                <select class="form-control"  th:field="*{occupation}">
+                    <option value="">Select Option</option>
+
+                    <option th:each="occupation:${occupationList}"
+                            th:value="${occupation.id}"
+                            th:text="${occupation.name}">
+                    </option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </fieldset>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

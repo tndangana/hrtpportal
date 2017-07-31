@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admnistration</title>
+</head>
+<body>
+<br/><br/><br/><br/>
+<div th:include="fragments/Header::header"></div>
+
+<div class="container">
+<div  class="row table table-inverse">
+    <div class="col-6 col-md-4"  ><a th:href="@{|/maritalstatus/list.maritalstatus|}">Marital Status</a></div>
+    <div class="col-6 col-md-4"><a th:href="@{|/religion/list.religion|}">Religion</a> </div>
+    <div class="col-6 col-md-4"><a th:href="@{|/occupation/list|}">Occupation</a> </div>
+</div>
+<div class="row table table-inverse">
+    <div class="col-6 col-md-4"><a th:href="@{|/accommodation/list.accommodation|}">Accommodation Type</a> </div>
+    <div class="col-6 col-md-4"><a th:href="@{|/qualification/list.qualification|}">Qualification</a> </div>
+    <div class="col-6 col-md-4"><a th:href="@{|/title/list.title|}">Title</a></div>
+</div>
+<div class="row table table-inverse" >
+    <div class="col-6 col-md-4 "><a th:href="@{|/mobileoperatingsystem/list.mobileoperatingsystem|}">Mobile Operating System</a></div>
+    <div class="col-6 col-md-4"><a th:href="@{|/socialMediaApplication/list.socialMediaApplication|}">Social Media Application</a></div>
+    <div class="col-6 col-md-4"><a th:href="@{|/socialMediaBenefits/list.socialMediaBenefits|}">Social Media Benefits</a></div>
+</div>
+<div class="row table table-inverse">
+    <div class="col-6 col-md-4"><a th:href="@{|/serviceProvider/list|}">Service Provider</a></div>
+    <div class="col-6 col-md-4"><a th:href="@{|/agricPractise/list|}">Agriculture Activities</a></div>
+    <div class="col-6 col-md-4"><a th:href="@{|/surplusProduceUsage/list|}">Surplus Produce Usage</a></div>
+</div>
+
+
+    <div class="row table table-inverse">
+        <div class="col-6 col-md-4"><a th:href="@{|/incomeGeneratingProject/list|}">Income Generating Activities</a></div>
+        <div class="col-6 col-md-4"><a th:href="@{|/nutritionReccommender/list|}">Nutrition Recommended</a></div>
+        <div class="col-6 col-md-4"><a th:href="@{|/tradFoodBeingTaken/list|}">Traditional Food Being Taken</a></div>
+
+        </div>
+    </div>
+
+<div th:include="fragments/Footer::footer"></div>
+
+</body>
+</html>

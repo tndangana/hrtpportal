@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="accommodationList" type="zw.co.tndangana.hrtp.domain.Accommodation"*/-->
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:include="fragments/Header::header"></div>
+br/><br/><br/><br/>
+<div class="container">
+    <br/><br/><br/>
+    <table class="row">
+    <thead>
+
+    <td  class="col-6 col-md-4" >Name</td>
+    <td  class="col-6 col-md-4" >Description</td>
+    <td  class="col-6 col-md-4" >Action/<a th:href="@{|/accommodation/add.form|}">add</a></td>
+    </thead>
+
+    <tbody>
+
+     <p th:text="${count}"></p>
+    <tr th:each=" accommodation: ${accommodationList}">
+
+        <td><span th:text="${accommodation.name}"></span>  </td>
+        <td> <span th:text="${accommodation.description}"></span></td>
+        <td> <a th:href="@{|/accommodation/update.form/${accommodation.id}|}">Update</a></td>
+
+
+    </tr>
+    </tbody>
+</table>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

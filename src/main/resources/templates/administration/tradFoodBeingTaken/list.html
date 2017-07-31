@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*@thymesVar id="titlelist" type="zw.co.tndangana.hrtp.domain.Title"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title>Traditional Food Being Taken</title>
+</head>
+<body>
+<div th:include="fragments/Header::header"></div>
+br/><br/><br/><br/>
+<div class="container"><table class="row">
+    <thead>
+
+    <td  class="col-6 col-md-4" >Name</td>
+    <td  class="col-6 col-md-4" >Description</td>
+    <td  class="col-6 col-md-4" >Action/<a th:href="@{|/tradFoodBeingTaken/add|}">add</a></td>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="tradFoodBeingTaken: ${tradFoodBeingTakenList}">
+
+        <td><span th:text="${tradFoodBeingTaken.name}"></span>  </td>
+        <td> <span th:text="${tradFoodBeingTaken.description}"></span></td>
+        <td> <a th:href="@{|/tradFoodBeingTaken/update.form/${tradFoodBeingTaken.id}|}">Update</a></td>
+
+
+    </tr>
+    </tbody>
+</table>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

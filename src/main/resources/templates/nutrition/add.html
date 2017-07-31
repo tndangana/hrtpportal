@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="nutrition" type="zw.co.tndangana.hrtp.domain.nutrition.Nutrition"*/-->
+
+<head>
+    <meta charset="UTF-8"/>
+    <title> Nutrition</title>
+</head>
+<body>
+
+<div th:include="fragments/Header::header">
+
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+    <fieldset>
+        <legend> Nutrition</legend>
+
+
+        <form th:object="${nutrition}" th:action="@{|/nutrition/submit.form/${nutrition.patient.id}|}" method="post">
+
+            <div class="form-group">
+                <label>Is patient taking traditional food:</label>
+                <select  class="form-control" th:field="*{takingTradFood}">
+                    <option value="">Select Option</option>
+                    <option th:each="takingTradFood:${takingTradFoodList}"
+                            th:value="${takingTradFood}"
+                            th:text="${takingTradFood.name}">
+                    </option>
+                </select>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Frequency Of Traditional Food Consumption</label>
+                <div class="col-10">
+                    <input class="form-control" aria-autocomplete="both" type="number" th:field="*{frequencyOfTraditionalFoodConsumption}" value="How do I shoot web" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label"> Traditional Food Being taken:</label>
+               <div class="col-10" th:each="item :${tradFoodBeingTakenList}">
+                    <input type="checkbox" th:field="*{tradFoodBeingTaken.name}" th:value="${item}"/>
+                    <label th:text="${item}"></label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </fieldset>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

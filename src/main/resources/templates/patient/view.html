@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="patient" type="zw.co.tndangana.hrtp.domain.Patient"*/-->
+<!--/*@thymesVar id="address" type="zw.co.tndangana.hrtp.domain.Address"*/-->
+<!--/*@thymesVar id="contact" type="zw.co.tndangana.hrtp.domain.Contact"*/-->
+<!--/*@thymesVar id="ictData" type="zw.co.tndangana.hrtp.domain.ict.IctData"*/-->
+<!--/*@thymesVar id="psychoSocial" type="zw.co.tndangana.hrtp.domain.psycho.PsychoSocial"*/-->
+
+<body>
+<div th:include="fragments/Header::header"></div>
+<div class="container">
+    <h2>Dynamic Tabs</h2>
+    <p>To make the tabs toggleable, add the data-toggle="tab" attribute to each link. Then add a .tab-pane class with a unique ID for every tab and wrap them inside a div element with class .tab-content.</p>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        <li><a data-toggle="tab" href="#demography">Demography</a></li>
+        <li><a data-toggle="tab" href="#addressData">Address detail(s)</a></li>
+        <li><a data-toggle="tab" href="#contactdetails">Contact detail(s)</a></li>
+        <li><a data-toggle="tab" href="#ict">ICT</a></li>
+        <li><a data-toggle="tab" href="#ps">Psycho Social</a></li>
+        <li><a data-toggle="tab" href="#nutrition">Nutrition</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+
+            <div class="col-sm-8">
+                <div class="input-group">
+                    <input style="margin-top: 10px;" type="text" name="patient_search_list" id="patient_search_list" onkeyup="search_patient(this.value);"
+                           placeholder="" class="form-control"/>
+                    <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default"  style="margin-top: 10px;">
+                                    <span class="glyphicon glyphicon-search">
+
+                                    </span>
+                                </button>
+                </span>
+                </div>
+            </div>
+            <div class="input-group col-sm-4">
+                <h4>
+                    <a class="btn btn-sm btn-primary" th:href="@{|/patient/add.form|}">Add new Patient</a>
+                </h4>
+            </div>
+        </div>
+
+        <div id="demography" class="tab-pane fade">
+
+                <h3>Demography Detail<b>(s)</b></h3>
+            <a th:href="@{|/patient/create.update/${patient.id}|}">Update</a>
+
+
+            <div class="row">
+                <label class="col-sm-2">Title</label>
+                <div class="col-sm-10" th:text="${patient.title}"></div>
+            </div>
+            <div class="row ">
+                <label class="col-sm-2">First Name</label>
+                <div class="col-sm-10" th:text="${patient.firstName}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Last Name</label>
+                <div class="col-sm-10" th:text="${patient.lastName}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Gender</label>
+                <div class="col-sm-10" th:text="${patient.gender}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Date of birth</label>
+                <div class="col-sm-10" th:text="${patient.birthDate}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Marital Status</label>
+                <div class="col-sm-10" th:text="${patient.maritalStatus.name}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Religion</label>
+                <div class="col-sm-10" th:text="${patient.religion.name}"></div>
+            </div>
+                <div class="row">
+                    <label class="col-sm-2">Accommodation</label>
+                    <div class="col-sm-10" th:text="${patient.accommodation.name}"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2">Occupation</label>
+                    <div class="col-sm-10" th:text="${patient.occupation.name}"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2">Qualification</label>
+                    <div class="col-sm-10" th:text="${patient.qualification.name}"></div>
+                </div>
+
+        </div>
+
+    <div id="addressData" class="tab-pane fade">
+        <h3>Address Detail<b>(s)</b></h3>
+        <p><a th:href="@{|/address/add.form/${patient.id}|}">add Patient's Addres</a></p>
+
+
+
+        <div th:each="address:${addressList}">
+
+            <a th:href="@{|/address/${address.id}/update.form|}">Update Patient'</a>
+            <div class="row">
+                <label class="col-sm-2">Address Type</label>
+                <div class="col-sm-10" th:text="${address.addressType.name}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">House Number</label>
+                <div class="col-sm-10" th:text="${address.buildingNumber}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Stree Name</label>
+                <div class="col-sm-10" th:text="${address.streetName}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Residential Area</label>
+                <div class="col-sm-10" th:text="${address.surbub}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">City</label>
+                <div class="col-sm-10" th:text="${address.city}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Is it a current place of stay</label>
+                <div class="col-sm-10" th:text="${address.currentResident}"></div>
+            </div>
+        </div>
+        <div th:each="contact:${contactList}">
+            <div class="row">
+                <label class="col-sm-2">Contact Type</label>
+                <div class="col-sm-10" th:text="${contact.contactType.name}"></div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Contact Detail</label>
+                <div class="col-sm-10" th:text="${contact.contactDetail}"></div>
+            </div>
+
+
+        </div>
+    </div>
+        <div id="contactdetails" class="tab-pane fade">
+
+            <h3>Contact Detail<b>(s)</b></h3>
+            <p><a th:href="@{|/contact/add.form/${patient.id}|}">add Patient's Contacts</a></p>
+
+
+
+            <div th:each="contact:${contactList}">
+
+                <a th:href="@{|/contact/update.form/${contact.id}|}">Update Patient'</a>
+                <div class="row">
+                    <label class="col-sm-2">Contact Type:</label>
+                    <div class="col-sm-10" th:text="${contact.contactType.name}"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2">Contact Detail:</label>
+                    <div class="col-sm-10" th:text="${contact.contactDetail}"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ict" class="tab-pane fade">
+
+            <h3>ICT Detail<b>(s)</b></h3><a th:href="@{|/ictData/add.form/${patient.id}|}">Add Details</a>
+
+
+            <div th:each="ictData :${ictDataList}">
+                <a th:href="@{|/ictData/update.form/${ictData.id}|}">Update Data</a>
+
+                <div class="row">
+                    <label class="col-sm-2">Are you on Social Media</label>
+                    <div class="col-sm-10" th:text="${ictData.isOnSocialMedia.name}"></div>
+                </div>
+                <!--<div class="row">-->
+                    <!--<label class="col-sm-2">Social Media Applications That are used</label>-->
+                    <!--<div class="col-sm-10" th:text="${ictData.socialMediaApplication.name}"></div>-->
+                <!--</div>-->
+                <div class="row">
+                    <label class="col-sm-2">Can you access the internet on your mobile device</label>
+                    <div class="col-sm-10" th:text="${ictData.internetAccessOnDevice.name}"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2">Benefits of using social media</label>
+                    <div class="col-sm-10" th:text="${ictData.internetAccessOnDevice.name}"></div>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Would you freely discus hiv and Aids on Social Media?</label>
+                    <div class="col-sm-10" th:text="${ictData.hivDiscusionOnMedia.name}"></div>
+                </div>
+ </div>
+        </div>
+        <div id="ps" class="tab-pane fade">
+            <h3>Psycho Social Activity Detail</h3>
+           <a th:href="@{|/psychoSocial/add.form/${patient.id}|}">Add Details</a>
+
+            <div th:each="psychoSocial: ${psychList}">
+                <a th:href="@{|/psychoSocial/update.form/${psychoSocial.id}|}">Update PsychoSocial Activities</a>
+
+
+            <div class="row">
+                <label class="col-sm-2">Skills training received :</label>
+                <div class="col-sm-10" th:text="${psychoSocial.skillTrainingReceived.skillTrainingReceived1}"></div>
+                <div class="col-sm-10" th:text="${psychoSocial.skillTrainingReceived.skillTrainingReceived2}"></div>
+                <div class="col-sm-10" th:text="${psychoSocial.skillTrainingReceived.skillTrainingReceived3}"></div>
+            </div>
+                <div class="row">
+                    <label class="col-sm-2">Income generating projects being done:</label>
+                    <div class="col-sm-10" th:text="${psychoSocial.incomeGeneratingProject.name}"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2"> Affiliation to Zimbabwe Network For People Living With HIV(ZNNP+):</label>
+                    <div class="col-sm-10" th:text="${psychoSocial.znnpAffiliation.name}"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2"> Duration of affiliation to the Znnp+(years):</label>
+                    <div class="col-sm-10" th:text="${psychoSocial.durationOfznnpAffiliation}"></div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2">  Producing Surplus Products:</label>
+                    <div class="col-sm-10" th:text="${psychoSocial.surplusProduce.name}"></div>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">What is being done  with the surplus products:</label>
+                    <!--<div class="col-sm-10" th:text="${psychoSocial.surplusProduceUsage.name}"></div>-->
+                </div>
+
+            </div>
+
+        </div>
+        <div id="nutrition" class="tab-pane fade">
+            <br/> <br/>
+            <div class="col-sm-6"> <p>Nutrition Detail<b>(s)</b></p></div>
+            <div class="input-group col-sm-6"> <a class="btn btn-sm btn-primary"  th:href="@{|/nutrition/add.form/${patient.id}|}">Add Details</a></div>
+
+        </div>
+
+    </div>
+</div>
+
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

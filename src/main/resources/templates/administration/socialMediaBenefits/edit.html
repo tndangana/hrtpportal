@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="socialMediaBenefits" type="zw.co.tndangana.hrtp.domain.ict.SocialMediaBenefits"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title>Social Media Benefits</title>
+</head>
+<body>
+
+<div th:include="fragments/Header::header">
+
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+    <fieldset>
+        <legend>Social Media Benefits</legend>
+
+
+        <form th:object="${socialMediaBenefits}" th:action="@{|/socialMediaBenefits/submit.update/${socialMediaBenefits.id}/update|}" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Advantage(a)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{benefit1}"  value="Artisanal kale" id="example-text-input"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Advantage(b)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{benefit2}" value="How do I shoot web" id="example-search-input"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Advantage(c)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{benefit3}" value="How do I shoot web" id="example-search-input"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Advantage(d)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{benefit4}" value="How do I shoot web" id="example-search-input"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </fieldset>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

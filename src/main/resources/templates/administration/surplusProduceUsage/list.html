@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*@thymesVar id="surplusProduceUsage" type="zw.co.tndangana.hrtp.domain.SurplusProduceUsage"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:include="fragments/Header::header"></div>
+br/><br/><br/><br/>
+<div class="container"><table class="row">
+    <thead>
+
+    <td  class="col-6 col-md-4" >Name</td>
+    <td  class="col-6 col-md-4" >Description</td>
+    <td  class="col-6 col-md-4" >Action/<a th:href="@{|/surplusProduceUsage/add.form|}">add</a></td>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="surplusProduceUsage: ${surplusProduceUsageList}">
+
+        <td><span th:text="${surplusProduceUsage.name}"></span>  </td>
+        <td> <span th:text="${surplusProduceUsage.description}"></span></td>
+        <td> <a th:href="@{|/surplusProduceUsage/update.form/${surplusProduceUsage.id}|}">Update</a></td>
+
+
+    </tr>
+    </tbody>
+</table>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

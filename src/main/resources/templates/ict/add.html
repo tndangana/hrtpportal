@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="ictData" type="zw.co.tndangana.hrtp.domain.ict.IctData"*/-->
+<!--/*@thymesVar id="isOnSocialMediaList" type="zw.co.tndangana.hrtp.domain.ict.IsOnSocialMedia"*/-->
+<!--/*@thymesVar id="socialMediaApplicationList" type="zw.co.tndangana.hrtp.domain.ict.SocialMediaApplication"*/-->
+<!--/*@thymesVar id="internetAccessOnDeviceList" type="zw.co.tndangana.hrtp.domain.ict.InternetAccessOnDevice"*/-->
+<!--/*@thymesVar id="hivDiscusionOnMediaList" type="zw.co.tndangana.hrtp.domain.ict.HivDiscusionOnMedia"*/-->
+<!--/*@thymesVar id="basicYesNoList" type="zw.co.tndangana.hrtp.domain.ict.IctData"*/-->
+<!--/*@thymesVar id="usedSocialMForMarketingList" type="zw.co.tndangana.hrtp.domain.ict.UsedSocialMForMarketing"*/-->
+
+<!--/*@thymesVar id="safeTrainingOfPatientList" type="zw.co.tndangana.hrtp.domain.ict.SafeTrainingOfPatient"*/-->
+<!--/*@thymesVar id="serviceProvider" type="zw.co.tndangana.hrtp.domain.ict.ServiceProvider"*/-->
+
+<head>
+    <meta charset="UTF-8"/>
+    <title> Social Media Generating Methods</title>
+</head>
+<body>
+
+<div th:include="fragments/Header::header">
+
+</div>
+<br/><br/><br/><br/>
+<div class="container">
+    <fieldset>
+        <legend>ICT Details</legend>
+    <form th:object="${ictData}" th:action="@{|/ictData/submit.form/${ictData.patient.id}|}" method="post">
+
+          <div class="form-group">
+                <label class="col-2 col-form-label">Is Patient On Social Media</label>
+            <div th:each="item:${isOnSocialMediaList}" class="row">
+                <input type="radio" th:field="*{isOnSocialMedia}" th:value="${item}"/>
+                <label th:text="${item}"></label>
+            </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Which social media appliaction(s) does the patient use</label>
+                <div class="col-10" th:each="item :${socialMediaApplicationList}">
+                    <input type="checkbox" th:field="*{socialMediaApplication}" th:value="${item}"/>
+                    <label th:text="${item}"></label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label">Can patient access the internet?</label>
+
+                <div class="col-10" th:each="item :${internetAccessOnDeviceList}">
+                    <input type="radio" th:field="*{internetAccessOnDevice}" th:value="${item}"/>
+                    <label th:text="${item}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <label for="example-search-input" class="col-2 col-form-label">List the benefits on using social media in relation to the patient and support groups</label>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(a)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{socialMediaBenefits.benefit1}"  value="Artisanal kale" id="birthDate"/>
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(b)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{socialMediaBenefits.benefit2}" />
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(c)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{socialMediaBenefits.benefit3}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label"> Would you freely discuss HIV/AIDS issues on social networks?</label>
+
+                <div class="col-10" th:each="item :${hivDiscusionOnMediaList}">
+                    <input type="radio" th:field="*{hivDiscusionOnMedia}" th:value="${item}"/>
+                    <label th:text="${item}"></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="example-search-input" class="col-2 col-form-label">How can social media application help you generate money</label>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(a)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{socialMediaGeneratingMethods.method1}" />
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(b)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{socialMediaGeneratingMethods.method2}" />
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(c)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{socialMediaGeneratingMethods.method3}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label"> Have you used social networks to market your produce/business before?</label>
+
+
+                <div class="col-10" th:each="item :${usedSocialMForMarketingList}">
+                    <input type="radio" th:field="*{usedSocialMForMarketing}" th:value="${item}"/>
+                    <label th:text="${item}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <label for="example-search-input" class="col-2 col-form-label">How has the patient used social media to market personal business</label>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(a)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{selfBusinessHelpFromSocialMedia.benefit1}" />
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(b)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{selfBusinessHelpFromSocialMedia.benefit2}" />
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label for="birthDate" class="col-2 col-form-label">(c)</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" th:field="*{selfBusinessHelpFromSocialMedia.benefit3}" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-search-input" class="col-2 col-form-label"> Have you received any training on safe, and secure use of social networks? </label>
+
+
+                <div class="col-10" th:each="item :${safeTrainingOfPatientList}">
+                    <input type="radio" th:field="*{usedSocialMForMarketing}" th:value="${item}"/>
+                    <label th:text="${item}"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="serviceProvider.id">Service Provider</label>
+                <select  class="form-control" id="serviceProvider.id" th:field="*{serviceProvider}">
+                    <option value="">Select Option</option>
+
+                    <option th:each="serviceProvider:${serviceProviderList}"
+                            th:value="${serviceProvider.id}"
+                            th:text="${serviceProvider.name}">2</option>
+                </select>
+            </div>
+        <div class="form-group">
+            <label for="serviceProvider.id">Mobile Operating System For Patient</label>
+            <select  class="form-control" id="mobileOperatingSystem.id" th:field="*{serviceProvider}">
+                <option value="">Select Option</option>
+
+                <!--/*@thymesVar id="mobileOperatingSystem" type="zw.co.tndangana.hrtp.domain.ict.MobileOperatingSystem"*/-->
+                <option th:each="mobileOperatingSystem:${mobileOperatingSystemList}"
+                        th:value="${mobileOperatingSystem.id}"
+                        th:text="${mobileOperatingSystem.name}">2</option>
+            </select>
+        </div>
+
+ <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </fieldset>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>

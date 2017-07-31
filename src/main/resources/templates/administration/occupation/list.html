@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*@thymesVar id="occupationlist" type="zw.co.tndangana.hrtp.domain.Occupation"*/-->
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:include="fragments/Header::header"></div>
+br/><br/><br/><br/>
+<div class="container"><table class="row">
+    <thead>
+
+    <td  class="col-6 col-md-4" >Name</td>
+    <td  class="col-6 col-md-4" >Description</td>
+    <td  class="col-6 col-md-4" >Action/<a th:href="@{|/occupation/add.form|}">add</a></td>
+ </thead>
+
+    <tbody>
+
+    <tr th:each="occupation: ${occupationlist}">
+
+    <td><span th:text="${occupation.name}"></span>  </td>
+    <td> <span th:text="${occupation.description}"></span></td>
+   <td> <a th:href="@{|/occupation/update.form/${occupation.id}|}">Update</a></td>
+
+
+    </tr>
+    </tbody>
+</table>
+</div>
+<div th:include="fragments/Footer::footer"></div>
+</body>
+</html>
